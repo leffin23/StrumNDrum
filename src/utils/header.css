@@ -169,9 +169,6 @@ nav a{
     transform: translateY(0.15em); 
 }
 @media (max-width: 768px) {
-    header{
-        /* overflow: hidden; */
-    }
     nav{ 
         z-index: 2;
         position: absolute;

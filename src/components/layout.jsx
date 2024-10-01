@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom'
 import Cart from './cart/Cart'
 import Header from './header'
 import { useSelector } from 'react-redux'
-import Footer from './Footer'
 
 const Layout = () => {
 
@@ -13,7 +12,7 @@ const Layout = () => {
       <main className={`container ${statusCart === false ? "" : "move"}`}>
         <Header/>
         <Outlet/>
-        <Footer/>
+        {/* <Footer/> */}
       </main>
       <Cart/>
 
