@@ -1,0 +1,266 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: var(--light-text);
+  --light-text: rgba(255, 255, 255, 0.87);
+  --backgroundColor: rgb(24, 24, 24);
+  --icon: rgb(153, 0, 107);
+  --header-bg: rgb(47, 32, 65);
+  --product-bg: rgb(99, 92, 109);
+  --cart-bg: rgb(81, 65, 98);
+  --product-text:  rgba(255, 255, 255, 0.87);
+  --qnt-text: rgb(99, 92, 109);
+  --crsl-hover:  rgb(239, 215, 215);
+  --crsl-color: rgb(161, 149, 149);
+  --border-color: rgb(150, 131, 131);
+  --icon-hover: rgb(194, 13, 139);
+  --add-hover:  rgba(255, 255, 255, 0.3);
+  --qnt-hover: rgb(255, 246, 246);
+  --cart-item: rgb(159, 121, 159);
+}
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+}
+button{
+  border: none;
+  outline: none;
+}
+a{
+  text-decoration: none;
+  color: var(--light-text);
+}
+html, body{
+  width: 100%;
+  height: 100%;
+}
+body{
+  background-color: var(--backgroundColor);
+  transition:  background-color 0.3s ease;
+}
+
+
+/* @media (prefers-color-scheme: light) {
+  body {
+  --light-text: rgb(255, 255, 255);
+  --backgroundColor: rgb(234, 225, 240);
+  --icon: rgb(153, 0, 107);
+  --header-bg: rgb(61, 42, 82);
+  --product-bg: rgb(135, 121, 155);
+  --cart-bg: rgb(132, 112, 170);
+  }
+} */
+
+
+[data-theme="light"] {
+  --light-text: rgb(255, 255, 255);
+  --backgroundColor: rgb(234, 225, 240);
+  --icon: rgb(153, 0, 107);
+  --header-bg: rgb(61, 42, 82);
+  --product-bg: rgb(135, 121, 155);
+  --cart-bg: rgb(132, 112, 170);
+  --product-text:rgb(61, 49, 73);
+  --qnt-text: rgb(255, 255, 255);
+  --crsl-hover:  rgb(182, 24, 134);
+  --crsl-color: rgb(254, 238, 238);
+  --border-color: rgb(150, 131, 131);
+  --add-hover:  rgba(220, 215, 218, 0.7);
+  --qnt-hover: rgb(131, 106, 158);
+  --cart-item: rgb(217, 194, 217);
+  --header-bg: rgb(61, 42, 82);
+
+
+}
+
+.toggle-container {
+  position: relative;
+  width: 2.5em; 
+  height: 1.25em; 
+  background-color: #555;
+  border-radius: 2em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.15em 0em;
+}
+
+.toggle-container .color-icon {
+  font-size: 0.75em; 
+
+}
+
+.toggle-switch {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left:5%;
+  width:1em; 
+  height:1em;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.toggle-container.dark .toggle-switch {
+  left: 55%; 
+  color: rgb(255, 255, 255);
+  background-color: rgb(95, 87, 87);
+ 
+}
+.toggle-container.dark {
+  background-color:  rgb(126, 169, 255);
+}
+ .sun{
+  /* color: rgb(95, 87, 87); */
+  color:  rgb(255, 194, 73);
+}
+
+.moon{
+  color: rgb(255, 219, 112);
+}
+
+.toggle-container.dark .moon{
+  color: rgb(255, 255, 255);
+}
+
+
+.error-page {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: clamp(1em, 1.45vw, 1.5em);
+  color: var(--product-text);
+}
+
+.error-img {
+  width: 100%; 
+  max-width: 600px; 
+  height: auto; 
+  max-height: 40%; 
+  object-fit: cover; 
+  overflow: hidden; 
+}
+.error-page a{
+  color: rgb(154, 71, 255);
+  text-decoration: 2px underline rgb(154, 71, 255);
+}
+
+.error-page a:hover{
+  color: rgb(182, 123, 255);
+
+}
+
+.home-page{
+  color: var(--product-text);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lalezar", system-ui;
+  padding: 20px;
+  position: relative;
+}
+
+.image-block {
+  flex: 1;
+  border-radius: 10% 0 0  10%;
+  background-image: url('/src/assets/stage_enhanced.jpg'); 
+  background-size: cover;
+  background-position: center;
+  mask-image: linear-gradient(to right, black 40%, transparent 100%);
+  height: 100%;
+}
+.slogan {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow-y: hidden; 
+  width: 70%;
+  max-height: 400px;
+  height: clamp( 200px, 25vw,400px);
+  position: relative;
+
+}
+.text-block {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+h1 {
+  font-size: clamp(.75rem, 2.5vw, 2.25rem);
+  text-align: left;
+  z-index: 0;
+}
+.shop{
+  padding: 1em;
+  border-radius: 10px;
+  background-color:var( --product-text);
+  color: var(--qnt-text);
+  font-family: "Lalezar", system-ui;
+  cursor: pointer;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%)
+}
+.shop:hover{
+  background-color:var( --qnt-hover);
+}
+
+@media (max-width: 768px) {
+  .home-page {
+  width: 100%;
+  padding: 0;
+  justify-content: flex-start;
+  align-items: flex-start;
+    
+  }
+  .slogan {
+    flex-direction: column-reverse;
+    height: 100%; 
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .image-block {
+    width: 100%; 
+    height: 100%; 
+    border-radius: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    mask-image: linear-gradient(to top, black 40%, transparent 100%); 
+  }
+
+  .text-block {
+    width: 100%; 
+    height: fit-content;
+    flex:none;
+    padding-top: 3em;
+  }
+
+  h1 {
+    font-size: clamp(1rem, 5vw, 2rem); 
+    text-align: center;
+    padding: 0 1em;
+    height: fit-content;
+ 
+  }
+}
