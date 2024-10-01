@@ -11,8 +11,6 @@ const Footer = () => {
         <img src="/src/assets/icons fully white.png"
         onMouseOver={e => (e.currentTarget.src = "/src/assets/icons_white.png")}
         onMouseOut={e => (e.currentTarget.src = "/src/assets/icons fully white.png")}
-     
-        
         />
         </Link>
         <div className="socials">
