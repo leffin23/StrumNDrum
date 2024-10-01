@@ -96,7 +96,7 @@ header{
     transition: all 0.2s ease;
 }
 .logo:hover .icon{
-    background-image: url("/src/assets/icons\ fully\ white.png");
+    background-image: url("/src/assets/icons_fully_white.png");
 }
 .logo:hover{
     background-color:  var(--icon-hover);

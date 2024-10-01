@@ -9,12 +9,12 @@ const Footer = () => {
     <footer className="footer">
       <Link to={"/"} className="footer-logo">
         <img
-          src="/src/assets/icons fully white.png"
+          src="/src/assets/icons_fully_white.png"
           onMouseOver={(e) =>
             (e.currentTarget.src = "/src/assets/icons_white.png")
           }
           onMouseOut={(e) =>
-            (e.currentTarget.src = "/src/assets/icons fully white.png")
+            (e.currentTarget.src = "/src/assets/icons_fully_white.png")
           }
         />
       </Link>
