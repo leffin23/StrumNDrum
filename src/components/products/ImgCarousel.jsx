@@ -19,7 +19,7 @@ const img = Array.isArray(props.img) ? props.img : [];
   };
 
   useEffect(() => {
-    setCurrentImg(0); // Сброс текущего изображения на первое
+    setCurrentImg(0); 
   }, [resetIndex]);
 
   return (

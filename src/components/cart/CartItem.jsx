@@ -48,7 +48,7 @@ const CartItem = (props) => {
       <div className="info-item">
       <img
         className="cart-img"
-        src={selectedVariant.img ? selectedVariant.img[0] : 'defaultImage.jpg'} // Use selectedVariant for the image
+        src={selectedVariant.img ? selectedVariant.img[0] : 'defaultImage.jpg'} 
         alt={productInfo.name}
                 />
        <p>{productInfo.price * quantity} €</p>
