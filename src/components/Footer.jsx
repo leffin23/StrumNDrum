@@ -4,17 +4,19 @@ import { faSquareTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import "../utils/footer.css";
 import { Link } from "react-router-dom";
+import icon_hover from '../assets/icons_white.png'
+import icon from '../assets/icons_fully_white.png';
 const Footer = () => {
   return (
     <footer className="footer">
       <Link to={"/"} className="footer-logo">
         <img
-          src="/src/assets/icons_fully_white.png"
+          src={icon}
           onMouseOver={(e) =>
-            (e.currentTarget.src = "/src/assets/icons_white.png")
+            (e.currentTarget.src=icon_hover)
           }
           onMouseOut={(e) =>
-            (e.currentTarget.src = "/src/assets/icons_fully_white.png")
+            (e.currentTarget.src=icon)
           }
         />
       </Link>
