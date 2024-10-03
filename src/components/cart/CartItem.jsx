@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
-import { products } from "../../utils/products";
+/* eslint-disable react/prop-types */
 import { useDispatch } from "react-redux";
 import { changeQuantity } from "../../stores/cart";
+import useProductInfo from "../../hooks/useProductInfo";
 
 const CartItem = (props) => {
   const { id, quantity, selectedVariant } = props;
-  const [productInfo, setProductInfo] = useState([]);
-  const img = productInfo?.selectedVariant?.img;
+  // const [productInfo, setProductInfo] = useState([]);
+  const productInfo = useProductInfo(id, selectedVariant);
+  // const img = productInfo?.selectedVariant?.img;
 
   const dispatch = useDispatch();
 
@@ -28,14 +29,14 @@ const CartItem = (props) => {
       })
     );
   };
-  useEffect(() => {
-    console.log(img);
-    const findProduct = products.filter((product) => id === product.id)[0];
-    console.log(findProduct);
-    setProductInfo(findProduct);
-    console.log("HM");
-    console.log(selectedVariant);
-  }, [id, selectedVariant, img]);
+  // useEffect(() => {
+  //   console.log(img);
+  //   const findProduct = products.filter((product) => id === product.id)[0];
+  //   console.log(findProduct);
+  //   setProductInfo(findProduct);
+  //   console.log("HM");
+  //   console.log(selectedVariant);
+  // }, [id, selectedVariant, img]);
 
   return (
     <div className="cart-item">

@@ -34,34 +34,39 @@ const Header = () => {
 
       <nav className={menuOpen ? "open" : ""}>
   
-        <NavLink
-          className={({ isActive, isPending }) =>
-            `nav-el ${isPending ? "pending" : isActive ? "active" : ""}`
-          }
-          to="/"
-        > 
-          {" "}
-          Home
-        </NavLink> 
-      
-        <NavLink
-          className={({ isActive, isPending }) =>
-            `nav-el ${isPending ? "pending" : isActive ? "active" : ""}`
-          }
-          to="/products"
-        >
-          {" "}
-          Products
-        </NavLink> 
+
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      `nav-el ${isPending ? "pending" : isActive ? "active" : ""}`
+                    }
+                    to="/"
+                  > 
+                    {" "}
+                    HOME
+                  </NavLink> 
+                
+                  <NavLink
+                    className={({ isActive, isPending }) =>
+                      `nav-el ${isPending ? "pending" : isActive ? "active" : ""}`
+                    }
+                    to="/products"
+                  >
+                    {" "}
+                    PRODUCTS
+                  </NavLink> 
+            
         <div className="nav-el">
-        <DarkModeToggle />
+           <DarkModeToggle />
         </div>
-        <div className="nav-el">
+      </nav>
+
+
+
+        
         <div className="cart-round" onClick={openCart}>
           <FontAwesomeIcon className="cart-icon" icon={faCartShopping} />
           <span className="cart-count">{totalQuantity}</span>
-        </div> </div>
-      </nav>
+        </div> 
       <div className={`hamburger ${menuOpen ? "openH" : ""}`} onClick={() => setMenuOpen((prev) => !prev)}>
         <div className="hamb-line"></div>
         <div className="hamb-line"></div>

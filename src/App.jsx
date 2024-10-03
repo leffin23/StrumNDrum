@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Products from './pages/Products'
 import Product from './components//products/Product'
 import NoFound from './pages/NoFound'
+import Payment from './pages/Payment'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route index element={<Home/>}></Route>
       <Route path='/products' element={<Products/>}></Route>
       <Route path='/products/:productId' element={<Product/>}></Route>
+      <Route path='/payment' element={<Payment/>}></Route>
       <Route path="*" element={<NoFound />} />
     </Route>
   </Routes>

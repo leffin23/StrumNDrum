@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../stores/cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

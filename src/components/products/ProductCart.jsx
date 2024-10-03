@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import AddToCart from "../cart/AddCart";
 import ImgCarousel from "./ImgCarousel";
