@@ -12,12 +12,14 @@ const Footer = () => {
       <Link to={"/"} className="footer-logo">
         <img
           src={icon}
+          alt="logo"
           onMouseOver={(e) =>
             (e.currentTarget.src=icon_hover)
           }
           onMouseOut={(e) =>
             (e.currentTarget.src=icon)
           }
+          
         />
       </Link>
       <div className="socials">
