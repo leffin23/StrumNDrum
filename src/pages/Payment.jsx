@@ -9,11 +9,12 @@ import { useEffect, useRef, useState } from "react";
 import OrderPDF from "../components/OrderPDF";
 import { PDFDownloadLink, PDFViewer, pdf } from '@react-pdf/renderer';
 import { blobToBase64, generatePDF, sendEmail } from "../stores/sendEmail";
+import Paypal from "../components/Paypal";
 
 
 const Payment = () => {
   const carts = useSelector((store) => store.cart.items);
-  const paypal = useRef();
+//   const paypal = useRef();
   const dispatch =  useDispatch();
   const[isSuccess, setIsSuccess] = useState(false)
   const[isError, setIsError] = useState(false)
@@ -23,78 +24,25 @@ const Payment = () => {
   const[isSent, setIsSent] = useState(false);
   const modal = useRef();
 
+
+  const handleApprove = (order) => {
+    const email = order.payer.email_address;
+    const shippingAddress = order.purchase_units[0].shipping.address;
+    setUserEmail(email);
+    setShippingAddress(shippingAddress);
+    setIsSuccess(true);
+    savePDF(email, shippingAddress);
+  };
+
+  const handleError = (err) => {
+    console.error(err);
+    setIsError(true);
+  };
+
   const total = carts.reduce((acc, item) => {
     const product = products.find((product) => item.productId === product.id);
     return acc + (product ? product.price * item.quantity : 0);
   }, 0);
-
-  useEffect(() => {
-
-    if (total > 0 && paypal.current) {
-        if (!window.paypal) {
-            console.error("PayPal SDK not loaded");
-            return;
-          }
-    paypal.current.innerHTML = ""; 
-    window.paypal
-      .Buttons({
-        createOrder: (data, actions, err) => {
-          return actions.order.create({
-            intent: "CAPTURE",
-            purchase_units: [
-              {
-                description: "Musical instruments",
-                amount: {
-                  currency_code: "EUR",
-                  value: Number(total),
-                },
-                // shipping: {
-                //   address: {
-                //     address_line_1: '', 
-                //     address_line_2: '',
-                //     admin_area_2: '', 
-                //     admin_area_1: '', 
-                //     postal_code: '',
-                //     country_code: '', 
-                //   },
-                // },
-              },
-            ],
-            // application_context: {
-            //   shipping_preference: "SET_PROVIDED_ADDRESS", // This will collect the shipping address from the buyer
-            // },
-          });
-        },
-        onApprove: async (data, actions) => {
-            const order = await actions.order.capture();
-            const email = order.payer.email_address; 
-            const shippingAddress = order.purchase_units[0].shipping.address; 
-            console.log(order);
-            console.log("Email:", email);
-            console.log("Shipping Address:", shippingAddress);
-            setUserEmail(email);
-            setShippingAddress(shippingAddress)
-            setIsSuccess(true);
-            // openPDFInNewWindow(email, shippingAddress);
-            savePDF(email, shippingAddress)
-            // handleSendEmail();
-            // setIsSent(true);
-
-
-          },
-        onError: (err) => {
-          console.log(err);
-          setIsError(true);
-        },
-        style: {
-            color: 'blue',      
-            shape: 'rect',      
-            label: 'pay',      
-        }
-      })
-      .render(paypal.current);
-    }
-  }, [total]);
 
     const handleCloseSuccess = () => {
         dispatch(clearCart()); 
@@ -111,20 +59,17 @@ const Payment = () => {
     }
   }, [isSuccess, pdfDownloaded, dispatch]);
 
-
-
-
-  const handleSendEmail = async () => {
-    const emailContent = 'Thank you for your order at Strum&Drum! We hope\
-        you will enjoy your new music instruments. Here are your order details!';
-    const doc = <OrderPDF email={userEmail} shippingAddress={shippingAddress} items={carts} total={total} />;
-    const attachmentBlob = await generatePDF(doc); 
-    const base64PDF = await blobToBase64(attachmentBlob);
-    const attachment = base64PDF.split(',')[1]; 
-    await sendEmail(userEmail, 'Your Strum&Drum order.', emailContent, attachment);
-    setIsSent(true);
+//   const handleSendEmail = async () => {
+//     const emailContent = 'Thank you for your order at Strum&Drum! We hope\
+//         you will enjoy your new music instruments. Here are your order details!';
+//     const doc = <OrderPDF email={userEmail} shippingAddress={shippingAddress} items={carts} total={total} />;
+//     const attachmentBlob = await generatePDF(doc); 
+//     const base64PDF = await blobToBase64(attachmentBlob);
+//     const attachment = base64PDF.split(',')[1]; 
+//     await sendEmail(userEmail, 'Your Strum&Drum order.', emailContent, attachment);
+//     setIsSent(true);
    
-  };
+//   };
   const savePDF = async (email, shippingAddressP) => {
     const doc = <OrderPDF email={email} shippingAddress={shippingAddressP} items={carts} total={total} />;
     const blob = await generatePDF(doc);
@@ -177,7 +122,10 @@ const Payment = () => {
           </div>
           <div className="pay-infos">
             <h1>Pay with</h1>
-            <div className="pay"ref={paypal}></div>
+            <Paypal               total={total}
+              onSuccess={handleApprove}
+              onError={handleError}/>
+            {/* <div className="pay"ref={paypal}></div> */}
           </div>
         </div>
       ) : (
