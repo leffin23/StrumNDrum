@@ -6,12 +6,15 @@ const resetIndex = props.resetIndex;
 const img = Array.isArray(props.img) ? props.img : []; 
   const [currentImg, setCurrentImg] = useState(0);
 
+
+
   const changeImgRight = (e) => {
     e.preventDefault();
     setCurrentImg((prevIndex) => {
       return prevIndex === img.length - 1 ? 0 : prevIndex + 1;
     });
   };
+
   const changeImgLeft = (e) => {
     e.preventDefault();
     setCurrentImg((prevIndex) => {
@@ -30,10 +33,14 @@ const img = Array.isArray(props.img) ? props.img : [];
           <img
             key={id}
             src={img}
-            alt={"Guitar " + `${1}`}
+            alt={"Guitar " + `${id + 1}`}
             style={{ transform: `translateX(${"-100" * currentImg}%)` }}
           />
-        ))}
+        ))} 
+        <div className={`indicators ${img.length <= 1 ? "hide" : ""}`}>
+           {img.map((_, id) => (<div key={id} className={currentImg == id ? "active" : ""}
+           onClick={() => setCurrentImg(id)}></div>))}
+        </div>
       </div>
       <span className="crsl-btn" onClick={(e) => changeImgLeft(e)}>
         {" "}

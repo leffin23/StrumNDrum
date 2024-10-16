@@ -1,4 +1,4 @@
-import { drum1Img, guitar1Img, guitar1Img2, guitar1White, guitar2Img, guitar3Img, guitar4Img, guitar5Img } from "./images";
+import { drum1Img, guitar1Img, guitar1Img2, guitar1White, guitar2Img, guitar3Img, guitar4Img, guitar5Img, guitar2Yellow, guitar2Red, guitar2Img2, guitar3Img2 } from "./images";
 
 export const categories = ["Guitars", "Drums", "Pianos"]
 export const products = [
@@ -10,7 +10,7 @@ export const products = [
                 color: '#5832a8',
                 img: [guitar1Img, guitar1Img2],
                 price: "2444",
-    
+
             },
             {
                 color: '#f5f5f5',
@@ -46,9 +46,21 @@ export const products = [
         variants: [
             {
                 color: '#5832a8',
-                img: [guitar2Img],
+                img: [guitar2Img, guitar2Img2],
                 price: "949",
-    
+
+            },
+            {
+                color: "red",
+                img: [guitar2Red],
+                price: "949",
+
+            },
+            {
+                color: "yellow",
+                img: [guitar2Yellow],
+                price: "949",
+
             },
         ],
         price: "949",
@@ -72,13 +84,13 @@ export const products = [
         variants: [
             {
                 color: 'Polar Lights',
-                img: [guitar3Img],
+                img: [guitar3Img, guitar3Img2],
                 price: "949",
             }
         ],
-        
+
         price: "413",
-        description: ""
+        description: "Ibanez RGA42EX-BAM electric guitar with Meranti Koprus, maple neck, black hardware and Quantum (H) pickup.Features:- Neck: 3 pcs. Wizard 3 maple. Width at last fret: 58 mm. Thickness on the 1st Fret: 19 mm, frets: 24, jumbo, string thickness: .010/.013/.017/.026/.036/.046, saddle width: 43 mm, strings: D'Addario EXL110, factory tuning: 1E, 2B, 3G, 4D, 5A, 6E, bridge: F1. 06 - Corus: Meranti hardware colour: black - fingerboard radius (mm): 400 - machine heads: Ibanez machine heads - scale: 648 mm / 25.5 inches - neck finish: satin polyurethane - switch: 1x volume, 1x tone, 5-way lever switch - fingerboard: maple - pickup: 2x quantum (humbucker) - thickness at 12th Waistband: 21 mm. Finish: satin polyurethane"
     },
     {
         id: 4,
@@ -126,5 +138,5 @@ Wrapped drum shells in black finish\
 The Ultimate beginners drum set with guaranteed fun\
 Includes brass cymbal set with 13\" Hi-hat and 15\" Crash/Ride Cymbals"
     },
-    
+
 ]
