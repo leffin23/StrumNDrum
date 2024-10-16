@@ -55,7 +55,7 @@ const CartItem = (props) => {
             {" "}
             -{" "}
           </button>
-          <span> {quantity} </span>
+          <span> x{quantity} </span>
           <button onClick={handlePlusQuantity} className="quant">
             +
           </button>

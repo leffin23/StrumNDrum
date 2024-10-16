@@ -7,9 +7,9 @@ import { products } from "../utils/products";
 import CartItem from "../components/cart/CartItem";
 import { useEffect, useRef, useState } from "react";
 import OrderPDF from "../components/OrderPDF";
-import { PDFDownloadLink, PDFViewer, pdf } from '@react-pdf/renderer';
 import { blobToBase64, generatePDF, sendEmail } from "../stores/sendEmail";
 import Paypal from "../components/Paypal";
+import { useNavigate } from "react-router-dom";
 
 
 const Payment = () => {
@@ -23,6 +23,7 @@ const Payment = () => {
   const [pdfDownloaded, setPdfDownloaded] = useState(false);
   const[isSent, setIsSent] = useState(false);
   const modal = useRef();
+  const router = useNavigate();
 
 
   const handleApprove = (order) => {
@@ -32,6 +33,8 @@ const Payment = () => {
     setShippingAddress(shippingAddress);
     setIsSuccess(true);
     savePDF(email, shippingAddress);
+
+    
   };
 
   const handleError = (err) => {
@@ -47,6 +50,7 @@ const Payment = () => {
     const handleCloseSuccess = () => {
         dispatch(clearCart()); 
         setIsSuccess(false);
+        router("/products")
     }
   const handleClose = () => {
     setIsSuccess(false);

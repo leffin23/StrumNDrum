@@ -125,6 +125,7 @@
     justify-content: space-evenly;
     background-color: var(--product-bg);
     transition: all 0.3s ease;
+    opacity: 0;
 }
 .product:hover {
     transform: scale(1.05);
@@ -143,7 +144,6 @@
     display: flex;
     overflow: hidden;
     border-radius: 10%;
-    
 }
 .prod-important{
     display: flex;

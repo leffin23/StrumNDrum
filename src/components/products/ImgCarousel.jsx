@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 
 const ImgCarousel = (props) => {
@@ -29,7 +30,7 @@ const img = Array.isArray(props.img) ? props.img : [];
           <img
             key={id}
             src={img}
-            alt={name}
+            alt={"Guitar " + `${1}`}
             style={{ transform: `translateX(${"-100" * currentImg}%)` }}
           />
         ))}

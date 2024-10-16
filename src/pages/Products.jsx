@@ -13,11 +13,13 @@ const Products = () => {
   const { selectedCategory, setSelectedCategory, filteredProducts } = useFilter("All", products);
 
   useGSAP(() => {
-    gsap.fromTo('.product', 
-      {
-        opacity: 0, 
-     
-      },
+
+    const productsTl = gsap.timeline();
+
+    productsTl.set('.product', {
+      opacity: 0,
+    })
+    productsTl.to('.product', 
       {
         opacity: 1,
         duration: .4,
