@@ -121,8 +121,6 @@ nav a{
     text-decoration: 2px overline rgb(236, 249, 255);
 }
 
-
-
 .hamburger{
     flex-direction: column;
     gap: .3em;
@@ -258,4 +256,10 @@ nav a{
 
 
 
+}
+
+@media screen and (min-width: 1400px){
+    header{
+        min-height: 5rem;
+    }
 }

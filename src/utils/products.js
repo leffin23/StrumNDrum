@@ -122,7 +122,7 @@ export const products = [
     },
     {
         id: 6,
-        name: 'Startone Star Drum Set Standard',
+        name: 'Startone Star Drum Set',
         category: 'Drums',
         variants: [
             {

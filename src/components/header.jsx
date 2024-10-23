@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleStatusCart } from "../stores/cart";
 import { DarkModeToggle } from "./DarkMode";
+import { gsap } from "gsap";
 
 const Header = () => {
   const [totalQuantity, setTotalQuantity] = useState(0);
@@ -21,6 +22,32 @@ const Header = () => {
     setTotalQuantity(total);
   }, [carts]);
 
+
+  // useEffect(()=> {
+  //   if(!menuOpen){
+  //     gsap.to('nav', {
+  //       display: "none"
+  //     })
+  //   }
+  // }, [menuOpen])
+  useEffect(() => {
+    const hamburger = document.querySelector('.hamburger');
+    const computedStyle = window.getComputedStyle(hamburger);
+
+    if(computedStyle.display === 'flex'){
+      console.log("Hamburger")
+      if (!menuOpen) {
+        setTimeout(() => {
+          gsap.set('nav', { display: "none" });
+          console.log("display none")
+        }, 500); 
+      } else {
+        gsap.set('nav', { display: "block" });
+        console.log("display block")
+      }
+    }
+  }, [menuOpen]);
+
   const openCart = () => {
     dispatch(toggleStatusCart());
   };
@@ -33,8 +60,6 @@ const Header = () => {
       </Link>
 
       <nav className={menuOpen ? "open" : ""}>
-  
-
                   <NavLink
                     className={({ isActive, isPending }) =>
                       `nav-el ${isPending ? "pending" : isActive ? "active" : ""}`
@@ -60,9 +85,6 @@ const Header = () => {
         </div>
       </nav>
 
-
-
-        
         <div className="cart-round" onClick={openCart}>
           <FontAwesomeIcon className="cart-icon" icon={faCartShopping} />
           <span className="cart-count">{totalQuantity}</span>

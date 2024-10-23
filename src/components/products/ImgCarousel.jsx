@@ -27,7 +27,7 @@ const img = Array.isArray(props.img) ? props.img : [];
   }, [resetIndex]);
 
   return (
-    <div>
+    <div className="product-carousel">
       <div className="img-container">
         {img.map((img, id) => (
           <img

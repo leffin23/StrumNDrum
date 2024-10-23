@@ -40,3 +40,19 @@
     transform: scale(1.15);
 
 }
+
+@media screen and (min-width: 1400px){
+    footer{
+        min-height: 5rem;
+    }
+    .contact{
+        width: 1.8rem;
+        height: 1.8rem;
+
+    }
+    .footer-logo img{
+        width: 2.5rem;
+        height: auto;
+    }
+    
+}
